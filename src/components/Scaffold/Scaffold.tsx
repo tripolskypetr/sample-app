@@ -29,7 +29,7 @@ export const Scaffold = ({
       <CssBaseline/>
       <AppBar>
         <Toolbar>
-          <Typography variant="h6">
+          <Typography variant='h6'>
             { title }
           </Typography>
         </Toolbar>

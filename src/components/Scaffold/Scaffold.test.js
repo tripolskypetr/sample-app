@@ -4,6 +4,9 @@ import Scaffold from './Scaffold';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<Scaffold/>, div);
+  ReactDOM.render(<Scaffold title='Hello there'/>, div);
+
+  expect(div.innerHTML).toContain('Hello there');
+
   ReactDOM.unmountComponentAtNode(div);
 });
