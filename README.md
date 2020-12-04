@@ -30,5 +30,10 @@ npm install @types/react-router-dom
 
 ```
 npm install classnames
-npm install @types/classnames
+```
+
+5. Устанавливаем `use-debounce`
+
+```
+npm install use-debounce
 ```

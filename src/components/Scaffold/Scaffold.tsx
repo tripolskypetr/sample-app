@@ -14,10 +14,15 @@ const useStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
 }));
 
+interface IScaffoldProps {
+  title?: string;
+  children?: React.ReactNode;
+}
+
 export const Scaffold = ({
   title = 'My amazing app',
-  children,
-}) => {
+  children = null,
+}: IScaffoldProps) => {
   const classes = useStyles();
   return (
     <>
@@ -31,7 +36,9 @@ export const Scaffold = ({
       </AppBar>
       <div className={classes.offset}/>
       <Container>
-        {children}
+        <div>
+          {children}
+        </div>
       </Container>
     </>
   );
