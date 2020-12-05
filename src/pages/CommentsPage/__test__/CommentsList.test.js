@@ -1,4 +1,5 @@
 import React from 'react';
+import moxios from 'moxios';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
@@ -12,6 +13,10 @@ jest.mock('react', () => ({
   ...jest.requireActual('react'),
   useLayoutEffect: jest.requireActual('react').useEffect,
 }));
+
+jest.setTimeout(15000)
+
+moxios.delay = 10;
 
 describe('creates one li per comment', () => {
 
@@ -27,6 +32,11 @@ describe('creates one li per comment', () => {
   let wrapped = null;
 
   beforeEach(() => {
+    moxios.install();
+    moxios.stubRequest('http://jsonplaceholder.typicode.com/comments', {
+      status: 200,
+      response: [ {name: 'Four'} ]
+    })
     wrapped = mount(
       <State initialState={initialState}>
         <CommentsList />
@@ -34,21 +44,33 @@ describe('creates one li per comment', () => {
     );
   });
 
-  it('has three list items', () => {
-    expect(wrapped.find('div.comments-list__listItem').length).toEqual(3);
-  })
+  it('has four list items', (done) => {
+    wrapped.update();
+    moxios.wait(function () {
+      expect(wrapped.find('div.comments-list__listItem').length).toBe(4);
+      done();
+    });
+  });
 
-  it('shows text on each list element', () => {
-    expect(wrapped.render().text()).toContain('One');
-    expect(wrapped.render().text()).toContain('Two');
-    expect(wrapped.render().text()).toContain('Three');
+  it('shows text on each list element', (done) => {
+    wrapped.update();
+    moxios.wait(function () {
+      expect(wrapped.render().text()).toContain('One');
+      expect(wrapped.render().text()).toContain('Two');
+      expect(wrapped.render().text()).toContain('Three');
+      expect(wrapped.render().text()).toContain('Four');
+      done();
+    });
   });
 
   afterEach(() => {
-    wrapped.unmount()
+    wrapped.unmount();
+    moxios.uninstall();
   });
 
 })
+
+
 
 /*describe('works with shallow wrapper', () => {
 

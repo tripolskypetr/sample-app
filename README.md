@@ -50,6 +50,12 @@ npm install use-debounce
 npm install redux @types/redux react-redux @types/react-redux
 ```
 
+ - 7. Работа с http (опционально)
+
+```
+npm install axios redux-promise moxios @types/moxios
+```
+
 ## Маппинг путей
 
 > Вместо записи `paths` в `tsconfig.json` был создан файл `.env`, где папке `src` был присвоен алиас `~`...

@@ -3,8 +3,9 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
 import reducers from './reducers';
+import middlewares from './middlewares';
 
-const createAppStore = (initialState) => createStore(reducers, initialState);
+const createAppStore = (initialState) => createStore(reducers, initialState, middlewares);
 
 interface IStateProps {
   children: React.ReactChild,
