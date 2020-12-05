@@ -4,13 +4,16 @@ import './styles.css';
 
 import Scaffold from './components/Scaffold';
 import Router from './Router';
+import State from './State';
 
 export const App = () => (
-  <BrowserRouter>
-    <Scaffold>
-      <Router />
-    </Scaffold>
-  </BrowserRouter>
+  <State>
+    <BrowserRouter>
+      <Scaffold>
+        <Router />
+      </Scaffold>
+    </BrowserRouter>
+  </State>
 );
 
 export default App;

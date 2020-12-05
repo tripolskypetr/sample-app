@@ -17,7 +17,7 @@ beforeEach(() => {
  * shallow - 1 уровень вложенности
  */
 it('Shows a ComponentBox (shallow)', () => {
-  expect(wrapped.find(CommentBox).length).toEqual(1); // toEqual это ===, toBe это ==
+  expect(wrapped.find(CommentBox).length).toEqual(1); // toEqual это ==, toBe это ===
 });
 
 /**
@@ -27,3 +27,7 @@ it('Shows a ComponentBox (shallow)', () => {
 //  const wrapped = render(<CommentsPage />);
 //  expect(wrapped.find('.component-list__root')).toBeTruthy();
 // });
+
+afterEach(() => {
+  wrapped.unmount();
+})
