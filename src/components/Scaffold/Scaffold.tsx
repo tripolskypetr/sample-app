@@ -12,6 +12,9 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 
 const useStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
+  container: {
+    background: 'whitesmoke',
+  },
 }));
 
 interface IScaffoldProps {
@@ -35,7 +38,7 @@ export const Scaffold = ({
         </Toolbar>
       </AppBar>
       <div className={classes.offset}/>
-      <Container>
+      <Container className={classes.container}>
         <div>
           {children}
         </div>
