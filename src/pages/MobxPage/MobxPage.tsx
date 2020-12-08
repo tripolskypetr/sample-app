@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import {compose} from 'redux';
 import {observer} from 'mobx-react';
 
+import {when, autorun} from 'mobx';
+
 import withUser from '../../stores/UserStore';
 
 export const MobxPage = (props) => {
@@ -21,6 +23,20 @@ export const MobxPage = (props) => {
   } = props;
   useEffect(() => {
     loadFollowers();
+  }, []);
+  useEffect(() => {
+    // реакция
+    when(() => props.user.age > 30, () => alert('Promise: age > 30'));
+  }, []);
+  useEffect(() => {
+    // реакция
+    const disposer = autorun(() => {
+      alert(props.user.age);
+    }, {
+      name: 'age reporter',
+      delay: 1000,
+    })
+    return () => disposer();
   }, []);
   return (
     <>
@@ -44,5 +60,6 @@ export const MobxPage = (props) => {
 
 export default compose(
   withUser,
+  // реакция
   observer,
 )(MobxPage);
