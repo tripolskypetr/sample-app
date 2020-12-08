@@ -56,6 +56,20 @@ npm install redux @types/redux react-redux @types/react-redux
 npm install axios redux-promise moxios @types/moxios
 ```
 
+ - 8. Redux-thunk
+
+> Позволяет выносить логику взаимодействия с backend в action-creator
+
+```
+npm install redux-thunk
+```
+
+ - 9. MobX
+
+```
+npm install mobx mobx-react
+```
+
 ## Маппинг путей
 
 > Вместо записи `paths` в `tsconfig.json` был создан файл `.env`, где папке `src` был присвоен алиас `~`...

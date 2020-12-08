@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Switch, Route } from "react-router-dom";
 
+import MobxPage from './pages/MobxPage';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import LoginPage from './pages/LoginPage';
@@ -20,6 +21,9 @@ export const Router = () => (
     </Route>
     <Route exact path="/login">
       <LoginPage />
+    </Route>
+    <Route exact path="/mobx">
+      <MobxPage />
     </Route>
   </Switch>
 );
